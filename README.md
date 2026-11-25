@@ -24,6 +24,15 @@ Os CSVs são baixados automaticamente da API pública do Kaggle na primeira exec
 
 Os arquivos baixados ficam em `data/raw/`, ignorados pelo Git. Não é necessário cadastrar token do Kaggle. Use `python app.py --refresh-data` para baixá-los novamente.
 
+### Fontes complementares avaliadas para a análise de 2026
+
+As fontes abaixo complementam a pesquisa, mas **ainda não são baixadas nem utilizadas pela aplicação**:
+
+- [Football Odds History: Brazil (Sample) — Kaggle](https://www.kaggle.com/datasets/archangel0x01/football-odds-brazil-sample), licença MIT. Inclui as 380 partidas do Brasileirão 2025, placares do intervalo e finais, rodada e odds. Pode ampliar o histórico de resultados; odds não devem ser usadas como atributos sem garantir que foram registradas antes do início da partida.
+- [Brasileirão 2003–2025 — Kaggle](https://www.kaggle.com/datasets/regazze/brasileirao-dataset-20032025), licença Apache 2.0. Contém estatísticas agregadas por temporada, como pontos, jogos e gols; serve para análises e conferência de classificações, mas não contém uma linha por partida para treinar o classificador.
+- [Details for Brasileirão 2025 Games — Kaggle](https://www.kaggle.com/datasets/pigortekids/details-for-brasileiro-2025-games), licença CC0. Contém calendário e metadados de transmissão, sem placares. A rodada foi inferida a partir das datas, portanto deve ser conferida com uma fonte oficial antes de uso.
+- [Tabela oficial da Série A 2026 — CBF](https://www.cbf.com.br/futebol-brasileiro/tabelas/campeonato-brasileiro/serie-a/2026). Referência para a classificação atual; é uma página dinâmica, não uma base histórica integrada ao aplicativo.
+
 ## Preparação e modelagem
 
 ### Tratamento e exploração
@@ -49,7 +58,7 @@ Os arquivos baixados ficam em `data/raw/`, ignorados pelo Git. Não é necessár
 
 **Resultado medido neste conjunto:** no teste temporal de 760 partidas (2022–2023), o classificador obteve acurácia de **44,6%**, acurácia balanceada de **41,7%** e F1 macro de **0,410**. O baseline que sempre escolhe a classe mais frequente teve **45,5%** de acurácia. A matriz de confusão (real nas linhas; previsto nas colunas, na ordem mandante/empate/visitante) foi `[[199, 54, 93], [77, 45, 84], [68, 45, 95]]`. O modelo identifica as três classes, mas não supera o baseline em acurácia simples; portanto, seu desempenho é limitado e não deve ser apresentado como previsão confiável. `python app.py --eval` refaz a medição nos arquivos baixados.
 
-Limitações importantes: os placares disponíveis terminam em 2023; as estatísticas de jogadores são da temporada de 2024. O ajuste de escalação é uma heurística, não foi validado por uma base histórica de escalações, e não considera lesões, suspensões, mudanças de técnico, tática ou transferências posteriores. As probabilidades do classificador não foram calibradas e o ajuste da escalação é heurístico; interprete-os como estimativas, não como chances confiáveis ou garantias.
+Limitações importantes: os placares usados atualmente pela aplicação terminam em 2023; as fontes complementares de 2025 e a tabela da CBF de 2026 listadas acima ainda não foram integradas. As estatísticas de jogadores são da temporada de 2024. O ajuste de escalação é uma heurística, não foi validado por uma base histórica de escalações, e não considera lesões, suspensões, mudanças de técnico, tática ou transferências posteriores. As probabilidades do classificador não foram calibradas e o ajuste da escalação é heurístico; interprete-os como estimativas, não como chances confiáveis ou garantias.
 
 ## Instalação e execução
 
@@ -62,7 +71,7 @@ python -m pip install -r requirements.txt
 python web.py
 ```
 
-Depois de iniciar o servidor, abra **http://127.0.0.1:8000** no navegador, selecione os clubes e clique em **Simular partida**. Na primeira execução, os arquivos do Kaggle são baixados automaticamente; isso requer conexão com a internet. Encerre o servidor com `Ctrl+C`.
+Depois de iniciar o servidor, abra **http://127.0.0.1:8000** no navegador, selecione os clubes e clique em **Simular partida**. Na primeira execução, os dois datasets integrados do Kaggle são baixados automaticamente; isso requer conexão com a internet. Encerre o servidor com `Ctrl+C`.
 
 Para usar a versão de linha de comando em vez da interface web, execute `python app.py`.
 
