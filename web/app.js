@@ -22,6 +22,10 @@ const comparisonStatus = document.querySelector("#comparison-status");
 const comparisonForm = document.querySelector("#comparison-configuration");
 const comparisonModelOptions = document.querySelector("#comparison-model-options");
 const comparisonModelResults = document.querySelector("#comparison-model-results");
+const roundModelRankingHead = document.querySelector("#round-model-ranking-head");
+const roundModelRanking = document.querySelector("#round-model-ranking");
+const clubModelRankingHead = document.querySelector("#club-model-ranking-head");
+const clubModelRanking = document.querySelector("#club-model-ranking");
 const comparisonRunStatus = document.querySelector("#comparison-run-status");
 const runComparisonButton = document.querySelector("#run-comparison");
 let roundFixtures = null;
@@ -307,6 +311,158 @@ function formatAccuracy(value) {
   return value === null ? "—" : `${(value * 100).toFixed(1)}%`;
 }
 
+function compareModelRates(left, right) {
+  return left.correct * right.samples - right.correct * left.samples;
+}
+
+function findRankingLeaders(modelEntries, statsByModel) {
+  const scoredModels = modelEntries
+    .map(([modelId, model]) => ({
+      modelId,
+      label: model.label,
+      ...(statsByModel[modelId] || { correct: 0, samples: 0 }),
+    }))
+    .filter((model) => model.samples > 0);
+
+  if (scoredModels.length === 0) {
+    return { modelIds: [], label: "Sem jogos encerrados" };
+  }
+
+  let bestModel = scoredModels[0];
+  for (const model of scoredModels.slice(1)) {
+    if (compareModelRates(model, bestModel) > 0) bestModel = model;
+  }
+  const leaders = scoredModels.filter(
+    (model) => compareModelRates(model, bestModel) === 0,
+  );
+  return {
+    modelIds: leaders.map((model) => model.modelId),
+    label: leaders.length > 1
+      ? `Empate: ${leaders.map((model) => model.label).join(" · ")}`
+      : leaders[0].label,
+  };
+}
+
+function renderRankingHeader(header, rowLabel, modelEntries) {
+  header.replaceChildren();
+  for (const label of [rowLabel, "Líder(es)"]) {
+    const cell = createElement("th", "", label);
+    cell.scope = "col";
+    header.append(cell);
+  }
+  for (const [, model] of modelEntries) {
+    const cell = createElement("th", "", model.label);
+    cell.scope = "col";
+    header.append(cell);
+  }
+}
+
+function renderRankingMetrics(row, modelEntries, statsByModel, leaders) {
+  const leaderIds = new Set(leaders.modelIds);
+  row.append(createElement("td", "model-ranking-leaders", leaders.label));
+
+  for (const [modelId] of modelEntries) {
+    const stats = statsByModel[modelId] || { correct: 0, samples: 0 };
+    const score = createElement(
+      "td",
+      `model-ranking-score${leaderIds.has(modelId) ? " is-leader" : ""}`,
+    );
+    score.append(
+      createElement(
+        "strong",
+        "",
+        formatAccuracy(stats.samples > 0 ? stats.correct / stats.samples : null),
+      ),
+      createElement(
+        "small",
+        "",
+        stats.samples > 0 ? `${stats.correct}/${stats.samples} acertos` : "Sem jogos",
+      ),
+    );
+    row.append(score);
+  }
+}
+
+function renderModelRankings(modelEntries, referenceRounds) {
+  renderRankingHeader(roundModelRankingHead, "Rodada", modelEntries);
+  renderRankingHeader(clubModelRankingHead, "Clube", modelEntries);
+  roundModelRanking.replaceChildren();
+  clubModelRanking.replaceChildren();
+
+  if (modelEntries.length === 0) {
+    for (const [body, columnCount] of [
+      [roundModelRanking, 2],
+      [clubModelRanking, 2],
+    ]) {
+      const row = document.createElement("tr");
+      const cell = createElement("td", "model-ranking-empty", "Nenhum modelo selecionado.");
+      cell.colSpan = columnCount;
+      row.append(cell);
+      body.append(row);
+    }
+    return;
+  }
+
+  for (const round of referenceRounds) {
+    const statsByModel = Object.fromEntries(
+      modelEntries.map(([modelId, model]) => {
+        const metrics = model.rounds.find((item) => item.number === round.number)?.metrics;
+        return [
+          modelId,
+          {
+            correct: metrics?.correct_predictions ?? 0,
+            samples: metrics?.samples ?? 0,
+          },
+        ];
+      }),
+    );
+    const leaders = findRankingLeaders(modelEntries, statsByModel);
+    const row = document.createElement("tr");
+    const roundLabel = createElement("th", "comparison-round-number", `Rodada ${round.number}`);
+    roundLabel.scope = "row";
+    row.append(roundLabel);
+    renderRankingMetrics(row, modelEntries, statsByModel, leaders);
+    roundModelRanking.append(row);
+  }
+
+  const statsByClub = new Map();
+  for (const [modelId, model] of modelEntries) {
+    for (const round of model.rounds) {
+      for (const match of round.matches) {
+        if (match.status !== "finished") continue;
+        for (const club of [match.home, match.away]) {
+          if (!statsByClub.has(club)) {
+            statsByClub.set(
+              club,
+              Object.fromEntries(
+                modelEntries.map(([entryModelId]) => [
+                  entryModelId,
+                  { correct: 0, samples: 0 },
+                ]),
+              ),
+            );
+          }
+          const stats = statsByClub.get(club)[modelId];
+          stats.samples += 1;
+          if (match.correct === true) stats.correct += 1;
+        }
+      }
+    }
+  }
+
+  for (const [club, statsByModel] of [...statsByClub.entries()].sort(
+    ([left], [right]) => left.localeCompare(right, "pt-BR"),
+  )) {
+    const leaders = findRankingLeaders(modelEntries, statsByModel);
+    const row = document.createElement("tr");
+    const clubLabel = createElement("th", "comparison-teams", club);
+    clubLabel.scope = "row";
+    row.append(clubLabel);
+    renderRankingMetrics(row, modelEntries, statsByModel, leaders);
+    clubModelRanking.append(row);
+  }
+}
+
 function renderComparison() {
   if (!seasonComparison) return;
 
@@ -320,6 +476,7 @@ function renderComparison() {
 
   const modelEntries = Object.entries(models);
   const referenceRounds = modelEntries[0]?.[1].rounds || [];
+  renderModelRankings(modelEntries, referenceRounds);
   const selectedRound = comparisonRoundSelect.value;
   comparisonMatches.replaceChildren();
   const tableHeader = document.querySelector(".comparison-table thead tr");

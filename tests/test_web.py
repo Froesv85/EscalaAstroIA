@@ -106,6 +106,8 @@ class WebHandlerTests(unittest.TestCase):
         self.assertIn("Escala Astro IA", page)
         self.assertIn('id="rounds-heading"', page)
         self.assertIn('id="comparison-heading"', page)
+        self.assertIn('id="round-model-ranking"', page)
+        self.assertIn('id="club-model-ranking"', page)
         self.assertIn('id="simulation-form"', page)
 
     def test_teams_endpoint_returns_available_clubs(self):

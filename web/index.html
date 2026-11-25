@@ -111,6 +111,48 @@
           </div>
         </form>
         <div class="comparison-model-results" id="comparison-model-results"></div>
+        <section class="comparison-rankings" aria-labelledby="comparison-rankings-heading">
+          <div class="section-title-row">
+            <div>
+              <span class="section-kicker">DESEMPENHO RELATIVO</span>
+              <h3 id="comparison-rankings-heading">Ranking de acertos por rodada e clube</h3>
+            </div>
+          </div>
+          <p class="rounds-description">
+            As tabelas destacam o modelo com maior acurácia em cada rodada e nos jogos de cada clube.
+            Cada resultado mostra acertos sobre jogos encerrados e a respectiva acurácia.
+          </p>
+          <div class="comparison-ranking-grid">
+            <article class="comparison-ranking-panel">
+              <h4>Ranking por rodada</h4>
+              <div class="comparison-ranking-table-wrap">
+                <table class="comparison-ranking-table" aria-label="Desempenho dos modelos por rodada">
+                  <thead>
+                    <tr id="round-model-ranking-head">
+                      <th scope="col">Rodada</th>
+                      <th scope="col">Líder(es)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="round-model-ranking" aria-live="polite"></tbody>
+                </table>
+              </div>
+            </article>
+            <article class="comparison-ranking-panel">
+              <h4>Ranking por clube</h4>
+              <div class="comparison-ranking-table-wrap">
+                <table class="comparison-ranking-table" aria-label="Desempenho dos modelos nos jogos de cada clube">
+                  <thead>
+                    <tr id="club-model-ranking-head">
+                      <th scope="col">Clube</th>
+                      <th scope="col">Líder(es)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="club-model-ranking" aria-live="polite"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
         <div class="comparison-toolbar">
           <label for="comparison-round">Filtrar rodada</label>
           <select id="comparison-round">
