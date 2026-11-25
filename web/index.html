@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="Simule jogos do Brasileirão e explore escalações recomendadas por dados.">
+  <title>Escala Astro IA — Simulador do Brasileirão</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Escala Astro IA, início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M20 3.5 34.3 11.7v16.6L20 36.5 5.7 28.3V11.7L20 3.5Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M13.5 23.9 19.8 12l6.7 15.1M16.4 20.5h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand-name">escala<span>astro</span><strong>IA</strong></span>
+      </a>
+      <div class="season-pill">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span>LAB DE FUTEBOL · BRASILEIRÃO</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow"><span class="eyebrow-line"></span> DADOS EM JOGO</p>
+        <h1>A próxima partida<br>começa <span>nos dados.</span></h1>
+        <p class="intro-copy">
+          Escolha os clubes. A inteligência artificial analisa o histórico,
+          estima o resultado e monta uma escalação para cada lado.
+        </p>
+      </section>
+
+      <section class="match-panel" aria-labelledby="match-heading">
+        <div class="panel-topline">
+          <div>
+            <span class="step-index">01 <span>/ 02</span></span>
+            <h2 id="match-heading">Monte o confronto</h2>
+          </div>
+          <span class="data-window">SÉRIE A <span aria-hidden="true">·</span> 2007—2023</span>
+        </div>
+
+        <form id="simulation-form">
+          <div class="match-selectors">
+            <label class="team-picker">
+              <span class="field-label"><span class="field-dot home-dot"></span> MANDANTE</span>
+              <span class="select-wrap">
+                <select id="home-team" name="home" required disabled>
+                  <option value="">Carregando clubes…</option>
+                </select>
+                <span class="select-chevron" aria-hidden="true">⌄</span>
+              </span>
+              <span class="home-caption">Joga em casa</span>
+            </label>
+
+            <button class="swap-button" id="swap-teams" type="button" aria-label="Inverter os clubes" disabled>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 7h12m0 0-3.5-3.5M19 7l-3.5 3.5M17 17H5m0 0 3.5 3.5M5 17l3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <label class="team-picker away-picker">
+              <span class="field-label"><span class="field-dot away-dot"></span> VISITANTE</span>
+              <span class="select-wrap">
+                <select id="away-team" name="away" required disabled>
+                  <option value="">Carregando clubes…</option>
+                </select>
+                <span class="select-chevron" aria-hidden="true">⌄</span>
+              </span>
+              <span class="home-caption">Joga fora</span>
+            </label>
+          </div>
+
+          <div class="form-footer">
+            <p class="micro-copy"><span class="tiny-lock" aria-hidden="true">✳</span> Simulação estatística. Futebol tem surpresas.</p>
+            <button class="simulate-button" id="simulate-button" type="submit" disabled>
+              <span>Simular partida</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="result-section" id="result-section" aria-labelledby="result-heading" hidden>
+        <div class="result-heading-row">
+          <div>
+            <span class="step-index">02 <span>/ 02</span></span>
+            <h2 id="result-heading">O cenário da partida</h2>
+          </div>
+          <span class="prediction-tag"><span class="prediction-dot"></span> SIMULAÇÃO CONCLUÍDA</span>
+        </div>
+
+        <article class="score-card">
+          <div class="score-kicker">PLACAR ESTIMADO</div>
+          <div class="score-display" id="score-display"></div>
+          <p class="score-summary" id="score-summary"></p>
+          <div class="score-footer"><span>BASEADO EM POISSON + DESEMPENHO</span><span id="expected-goals"></span></div>
+        </article>
+
+        <section class="probability-section" aria-labelledby="probability-heading">
+          <div class="section-title-row">
+            <div>
+              <span class="section-kicker">CHANCES DO JOGO</span>
+              <h3 id="probability-heading">Probabilidades estimadas</h3>
+            </div>
+            <span class="unadjusted-note">Ajustadas pelo índice das escalações · não calibradas</span>
+          </div>
+          <div class="probability-list" id="probability-list"></div>
+        </section>
+
+        <section class="lineups-section" aria-labelledby="lineups-heading">
+          <div class="section-title-row lineups-title-row">
+            <div>
+              <span class="section-kicker">DADOS DOS JOGADORES · 2024</span>
+              <h3 id="lineups-heading">Escalações recomendadas</h3>
+            </div>
+            <span class="formation-badge">FORMAÇÃO 4—3—3</span>
+          </div>
+          <div class="lineup-grid" id="lineup-grid"></div>
+          <p class="lineup-disclaimer">
+            Sugestões calculadas a partir de minutos e estatísticas individuais.
+            Não representam escalações oficiais ou atualizadas por lesões.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a class="footer-brand" href="/">Escala Astro IA</a>
+      <p>Projeto acadêmico · Aprendizado de Máquina · N3</p>
+      <span>OS DADOS INFORMAM. O JOGO DECIDE.</span>
+    </footer>
+  </div>
+</body>
+</html>
