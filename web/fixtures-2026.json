@@ -1,0 +1,3571 @@
+{
+  "updatedAt": "2026-11-25T10:26:00-03:00",
+  "timezone": "America/Sao_Paulo",
+  "note": "Snapshot consultado em 25/11/2026. Rodadas 1?37 compiladas do Brasileir?o em Rodadas; rodada 38 conforme agenda ESPN. Atualize os dados ap?s novos resultados. A previs?o retrospectiva de cada rodada usa somente os resultados das rodadas anteriores e o hist?rico do modelo at? 2023.",
+  "sources": [
+    {
+      "label": "Brasileir?o em Rodadas ? resultados e jogos (rodadas 1?37)",
+      "url": "https://brasileiraoemrodadas.com.br/brasileirao/rodadas/rodada-37.html"
+    },
+    {
+      "label": "Agenda da rodada 38 ? ESPN",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/scoreboard?dates=20261202&limit=100"
+    },
+    {
+      "label": "Tabela oficial ? CBF",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/tabelas/campeonato-brasileiro/serie-a/2026"
+    }
+  ],
+  "rounds": [
+    {
+      "number": 1,
+      "matches": [
+        {
+          "home": "Atlético-MG",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 2
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "matches": [
+        {
+          "home": "Flamengo",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 5,
+            "away": 1
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 5,
+            "away": 3
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "matches": [
+        {
+          "home": "Vitória",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 3
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 3
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 3
+          }
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "matches": [
+        {
+          "home": "Bragantino",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "matches": [
+        {
+          "home": "Mirassol",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 2
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 2
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "matches": [
+        {
+          "home": "Vitória",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 3
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 3
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "matches": [
+        {
+          "home": "Palmeiras",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "matches": [
+        {
+          "home": "Bragantino",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 1
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "matches": [
+        {
+          "home": "Botafogo",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 4
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "matches": [
+        {
+          "home": "São Paulo",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 1
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "matches": [
+        {
+          "home": "Vitória",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "matches": [
+        {
+          "home": "Vasco",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 4
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 3
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 2
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "matches": [
+        {
+          "home": "Botafogo",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 4
+          }
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "matches": [
+        {
+          "home": "Botafogo",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 1
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 3
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "matches": [
+        {
+          "home": "Coritiba",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "matches": [
+        {
+          "home": "Atlético-MG",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 1
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 3
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 3
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "matches": [
+        {
+          "home": "São Paulo",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 3
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 3
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "matches": [
+        {
+          "home": "Flamengo",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 3
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "matches": [
+        {
+          "home": "Botafogo",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 3
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 4
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "matches": [
+        {
+          "home": "Athletico-PR",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "matches": [
+        {
+          "home": "Mirassol",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 4
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 2
+          }
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "matches": [
+        {
+          "home": "Grêmio",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 2
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 2
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "matches": [
+        {
+          "home": "Fluminense",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 3
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 3
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 5
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "matches": [
+        {
+          "home": "Fluminense",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 2
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 3
+          }
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "matches": [
+        {
+          "home": "Atlético-MG",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 3
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 3
+          }
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "matches": [
+        {
+          "home": "Bragantino",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 3
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 3
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "matches": [
+        {
+          "home": "Coritiba",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 3
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "matches": [
+        {
+          "home": "Atlético-MG",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 5,
+            "away": 0
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 3
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 3
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "matches": [
+        {
+          "home": "Bragantino",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 0
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 0
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "matches": [
+        {
+          "home": "Vasco",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 1
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 4
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 2
+          }
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "matches": [
+        {
+          "home": "Mirassol",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 2
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 4
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 3
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "matches": [
+        {
+          "home": "Cruzeiro",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Mirassol",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "matches": [
+        {
+          "home": "Fluminense",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 4
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "matches": [
+        {
+          "home": "Bragantino",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 1
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 3
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Corinthians",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 6,
+            "away": 1
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 2
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 3
+          }
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "matches": [
+        {
+          "home": "Mirassol",
+          "away": "Atlético-MG",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Coritiba",
+          "away": "Santos",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Remo",
+          "away": "Chapecoense",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 0
+          }
+        },
+        {
+          "home": "Flamengo",
+          "away": "Athletico-PR",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Corinthians",
+          "away": "Botafogo",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 0
+          }
+        },
+        {
+          "home": "Grêmio",
+          "away": "Bahia",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 0
+          }
+        },
+        {
+          "home": "Vasco",
+          "away": "Internacional",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "Vitória",
+          "away": "Bragantino",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 1
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Fluminense",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "matches": [
+        {
+          "home": "Palmeiras",
+          "away": "Flamengo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Bahia",
+          "away": "Coritiba",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "home": "Chapecoense",
+          "away": "Cruzeiro",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "home": "Athletico-PR",
+          "away": "Remo",
+          "status": "finished",
+          "score": {
+            "home": 4,
+            "away": 2
+          }
+        },
+        {
+          "home": "Fluminense",
+          "away": "Mirassol",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Bragantino",
+          "away": "Vasco",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "home": "Internacional",
+          "away": "Vitória",
+          "status": "finished",
+          "score": {
+            "home": 2,
+            "away": 5
+          }
+        },
+        {
+          "home": "Botafogo",
+          "away": "São Paulo",
+          "status": "finished",
+          "score": {
+            "home": 1,
+            "away": 1
+          }
+        },
+        {
+          "home": "Santos",
+          "away": "Grêmio",
+          "status": "finished",
+          "score": {
+            "home": 0,
+            "away": 2
+          }
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Corinthians",
+          "status": "scheduled",
+          "kickoff": "2026-11-25T20:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "matches": [
+        {
+          "home": "Chapecoense",
+          "away": "Palmeiras",
+          "status": "finished",
+          "score": {
+            "home": 3,
+            "away": 0
+          }
+        },
+        {
+          "home": "São Paulo",
+          "away": "Remo",
+          "status": "scheduled",
+          "kickoff": "2026-11-26T20:00:00-03:00"
+        },
+        {
+          "home": "Fluminense",
+          "away": "Cruzeiro",
+          "status": "scheduled",
+          "kickoff": "2026-11-27T20:00:00-03:00"
+        },
+        {
+          "home": "Botafogo",
+          "away": "Bahia",
+          "status": "scheduled",
+          "kickoff": "2026-11-28T21:00:00-03:00"
+        },
+        {
+          "home": "Coritiba",
+          "away": "Flamengo",
+          "status": "scheduled",
+          "kickoff": "2026-11-29T16:00:00-03:00"
+        },
+        {
+          "home": "Vitória",
+          "away": "Santos",
+          "status": "scheduled",
+          "kickoff": "2026-11-29T16:00:00-03:00"
+        },
+        {
+          "home": "Corinthians",
+          "away": "Grêmio",
+          "status": "scheduled",
+          "kickoff": "2026-11-29T18:30:00-03:00"
+        },
+        {
+          "home": "Mirassol",
+          "away": "Athletico-PR",
+          "status": "scheduled",
+          "kickoff": "2026-11-29T18:30:00-03:00"
+        },
+        {
+          "home": "Internacional",
+          "away": "Bragantino",
+          "status": "scheduled",
+          "kickoff": "2026-11-29T18:30:00-03:00"
+        },
+        {
+          "home": "Atlético-MG",
+          "away": "Vasco",
+          "status": "scheduled",
+          "kickoff": "2026-11-29T19:30:00-03:00"
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "matches": [
+        {
+          "home": "Athletico-PR",
+          "away": "São Paulo",
+          "status": "scheduled",
+          "kickoff": "2026-12-02T21:30:00-03:00"
+        },
+        {
+          "home": "Bahia",
+          "away": "Atlético-MG",
+          "status": "scheduled",
+          "kickoff": "2026-12-02T21:30:00-03:00"
+        },
+        {
+          "home": "Cruzeiro",
+          "away": "Internacional",
+          "status": "scheduled",
+          "kickoff": "2026-12-02T21:30:00-03:00"
+        },
+        {
+          "home": "Flamengo",
+          "away": "Chapecoense",
+          "status": "scheduled",
+          "kickoff": "2026-12-02T21:30:00-03:00"
+        },
+        {
+          "home": "Grêmio",
+          "away": "Mirassol",
+          "status": "scheduled",
+          "kickoff": "2026-12-02T21:30:00-03:00"
+        },
+        {
+          "home": "Palmeiras",
+          "away": "Coritiba",
+          "status": "scheduled",
+          "kickoff": "2026-12-02T21:30:00-03:00"
+        },
+        {
+          "home": "Bragantino",
+          "away": "Fluminense",
+          "status": "scheduled",
+          "kickoff": "2026-12-02T21:30:00-03:00"
+        },
+        {
+          "home": "Remo",
+          "away": "Corinthians",
+          "status": "scheduled",
+          "kickoff": "2026-12-02T21:30:00-03:00"
+        },
+        {
+          "home": "Santos",
+          "away": "Botafogo",
+          "status": "scheduled",
+          "kickoff": "2026-12-02T21:30:00-03:00"
+        },
+        {
+          "home": "Vasco",
+          "away": "Vitória",
+          "status": "scheduled",
+          "kickoff": "2026-12-02T21:30:00-03:00"
+        }
+      ]
+    }
+  ]
+}

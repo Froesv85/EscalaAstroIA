@@ -260,5 +260,8 @@ class Repository:
             return canonical
         return None
 
+    def canonicalize_team_name(self, name):
+        return self._canonical_team(name)
+
     def get_data_quality(self):
         return self._data_quality.copy()

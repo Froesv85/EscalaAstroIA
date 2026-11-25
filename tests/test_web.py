@@ -5,10 +5,26 @@ from http.server import ThreadingHTTPServer
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
-from web import create_handler
+from service import Service
+from web import create_handler, get_2026_team_names
 
 
 class FakeService:
+    def compare_season(self, rounds, configurations=None):
+        matches = [match for round_data in rounds for match in round_data["matches"]]
+        completed = sum(match["status"] == "finished" for match in matches)
+        return {
+            "model_options": {},
+            "models": {},
+            "summary": {
+                "total_matches": len(matches),
+                "completed_matches": completed,
+                "pending_matches": len(matches) - completed,
+                "correct_predictions": 0,
+                "accuracy": 0.0 if completed else None,
+            },
+        }
+
     def list_team_names(self):
         return ["Flamengo", "Palmeiras"]
 
@@ -36,6 +52,17 @@ class FakeService:
                 "expected": {"home": 1.2, "away": 1.1},
             },
         }
+
+
+class FakeTeamRepository:
+    def get_team_names(self):
+        return ["Flamengo", "Palmeiras"]
+
+    def resolve_team_name(self, name):
+        return name if name in self.get_team_names() else None
+
+    def canonicalize_team_name(self, name):
+        return name
 
 
 class WebHandlerTests(unittest.TestCase):
@@ -77,6 +104,8 @@ class WebHandlerTests(unittest.TestCase):
 
         self.assertEqual(response.status, 200)
         self.assertIn("Escala Astro IA", page)
+        self.assertIn('id="rounds-heading"', page)
+        self.assertIn('id="comparison-heading"', page)
         self.assertIn('id="simulation-form"', page)
 
     def test_teams_endpoint_returns_available_clubs(self):
@@ -85,6 +114,66 @@ class WebHandlerTests(unittest.TestCase):
 
         self.assertEqual(payload["teams"], ["Flamengo", "Palmeiras"])
         self.assertEqual(payload["match_seasons"], "2007–2023")
+
+    def test_2026_team_list_includes_all_fixture_clubs(self):
+        teams = get_2026_team_names()
+        self.assertEqual(len(teams), 20)
+        self.assertIn("Mirassol", teams)
+        self.assertIn("Remo", teams)
+        self.assertIn("Chapecoense", teams)
+        service = Service(repository=FakeTeamRepository(), season_teams=teams)
+        self.assertEqual(service.list_team_names(), teams)
+        self.assertTrue(service.is_known("Mirassol"))
+
+    def test_2026_fixtures_endpoint_returns_all_rounds(self):
+        with urlopen(f"{self.base_url}/api/fixtures/2026", timeout=5) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+
+        self.assertEqual(response.status, 200)
+        self.assertEqual(
+            [round_data["number"] for round_data in payload["rounds"]],
+            list(range(1, 39)),
+        )
+        self.assertEqual(
+            [len(round_data["matches"]) for round_data in payload["rounds"]],
+            [10] * 38,
+        )
+        self.assertEqual(
+            [
+                sum(match["status"] == "finished" for match in round_data["matches"])
+                for round_data in payload["rounds"]
+            ],
+            [10] * 35 + [9, 1, 0],
+        )
+        self.assertEqual(
+            sum(
+                match["status"] == "scheduled"
+                for round_data in payload["rounds"]
+                for match in round_data["matches"]
+            ),
+            20,
+        )
+
+    def test_2026_comparison_endpoint_returns_predictions_and_actuals(self):
+        with urlopen(f"{self.base_url}/api/comparison/2026", timeout=5) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+
+        self.assertEqual(response.status, 200)
+        self.assertEqual(payload["summary"]["total_matches"], 380)
+        self.assertEqual(payload["summary"]["completed_matches"], 360)
+        self.assertEqual(payload["summary"]["pending_matches"], 20)
+        self.assertEqual(payload["updatedAt"][:10], "2026-11-25")
+        self.assertEqual(payload["models"], {})
+
+    def test_comparison_endpoint_accepts_model_parameters(self):
+        status, payload = self._post_json(
+            "/api/comparison/2026",
+            {"models": {"random_forest": {"n_estimators": 100}}},
+        )
+
+        self.assertEqual(status, 200)
+        self.assertEqual(payload["summary"]["total_matches"], 380)
+
 
     def test_simulation_endpoint_returns_prediction(self):
         status, payload = self._post_json(

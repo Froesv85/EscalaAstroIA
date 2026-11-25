@@ -15,7 +15,29 @@ STATIC_FILES = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/styles.css": ("styles.css", "text/css; charset=utf-8"),
     "/app.js": ("app.js", "text/javascript; charset=utf-8"),
+    "/api/fixtures/2026": ("fixtures-2026.json", "application/json; charset=utf-8"),
 }
+
+
+def load_2026_fixtures():
+    return json.loads(
+        (WEB_DIR / "fixtures-2026.json").read_text(encoding="utf-8")
+    )
+
+
+def get_2026_team_names():
+    fixtures = load_2026_fixtures()
+    teams = {
+        match[key].strip()
+        for round_data in fixtures["rounds"]
+        for match in round_data["matches"]
+        for key in ("home", "away")
+    }
+    if len(teams) != 20:
+        raise ValueError(
+            f"A base de jogos de 2026 deveria conter 20 clubes, mas contém {len(teams)}."
+        )
+    return sorted(teams, key=str.casefold)
 
 
 def create_handler(service):
@@ -43,6 +65,28 @@ def create_handler(service):
         def _send_error_json(self, status, message, code):
             self._send_json(status, {"ok": False, "error": code, "message": message})
 
+        def _send_comparison(self, configurations=None):
+            try:
+                fixtures = load_2026_fixtures()
+                comparison = service.compare_season(
+                    fixtures["rounds"],
+                    configurations,
+                )
+            except (OSError, UnicodeDecodeError, KeyError, TypeError, ValueError, RuntimeError) as error:
+                invalid_parameters = configurations is not None and isinstance(error, ValueError)
+                self._send_error_json(
+                    400 if invalid_parameters else 500,
+                    f"Não foi possível gerar o comparativo de 2026: {error}",
+                    "invalid_model_configuration" if invalid_parameters else "comparison_error",
+                )
+                return
+            comparison.update({
+                "updatedAt": fixtures["updatedAt"],
+                "note": fixtures["note"],
+                "sources": fixtures["sources"],
+            })
+            self._send_json(200, comparison)
+
         def do_GET(self):
             path = urlsplit(self.path).path
             if path == "/api/teams":
@@ -51,6 +95,10 @@ def create_handler(service):
                     "match_seasons": "2007–2023",
                     "player_season": "2024",
                 })
+                return
+
+            if path == "/api/comparison/2026":
+                self._send_comparison()
                 return
 
             static_file = STATIC_FILES.get(path)
@@ -71,7 +119,8 @@ def create_handler(service):
             self._send_error_json(404, "Página não encontrada.", "not_found")
 
         def do_POST(self):
-            if urlsplit(self.path).path != "/api/simulate":
+            path = urlsplit(self.path).path
+            if path not in ("/api/simulate", "/api/comparison/2026"):
                 self._send_error_json(404, "Rota não encontrada.", "not_found")
                 return
 
@@ -105,6 +154,18 @@ def create_handler(service):
 
             if not isinstance(payload, dict):
                 self._send_error_json(400, "O JSON deve ser um objeto.", "invalid_request")
+                return
+
+            if path == "/api/comparison/2026":
+                configurations = payload.get("models")
+                if not isinstance(configurations, dict):
+                    self._send_error_json(
+                        400,
+                        "Envie os modelos e parâmetros em um objeto 'models'.",
+                        "invalid_request",
+                    )
+                    return
+                self._send_comparison(configurations)
                 return
 
             home = payload.get("home")
@@ -158,7 +219,10 @@ def main(argv=None):
     args = parser.parse_args(argv)
 
     try:
-        service = Service(refresh_data=args.refresh_data)
+        service = Service(
+            refresh_data=args.refresh_data,
+            season_teams=get_2026_team_names(),
+        )
         service.setup()
         server = ThreadingHTTPServer((args.host, args.port), create_handler(service))
     except (OSError, RuntimeError, ValueError) as error:

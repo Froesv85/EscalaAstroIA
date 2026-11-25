@@ -21,6 +21,11 @@
         </span>
         <span class="brand-name">escala<span>astro</span><strong>IA</strong></span>
       </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="#rounds-heading">Rodadas</a>
+        <a href="#comparison-heading">Comparativo</a>
+        <a href="#match-heading">Simular</a>
+      </nav>
       <div class="season-pill">
         <span class="live-dot" aria-hidden="true"></span>
         <span>LAB DE FUTEBOL · BRASILEIRÃO</span>
@@ -35,6 +40,99 @@
           Escolha os clubes. A inteligência artificial analisa o histórico,
           estima o resultado e monta uma escalação para cada lado.
         </p>
+        <div class="intro-actions">
+          <a class="intro-action intro-action-primary" href="#match-heading">Simular uma partida</a>
+          <a class="intro-action intro-action-secondary" href="#comparison-heading">Explorar comparação 2026</a>
+        </div>
+      </section>
+
+      <section class="rounds-section" aria-labelledby="rounds-heading">
+        <div class="rounds-heading">
+          <div>
+            <p class="section-kicker">BRASILEIRÃO · TEMPORADA 2026</p>
+            <h2 id="rounds-heading">Jogos das rodadas finais</h2>
+          </div>
+          <span class="rounds-snapshot" id="rounds-snapshot"></span>
+        </div>
+        <p class="rounds-description" id="rounds-description"></p>
+        <div class="round-selector" aria-label="Selecionar rodada">
+          <button class="round-button" type="button" data-round="35" aria-pressed="false">Rodada 35</button>
+          <button class="round-button" type="button" data-round="36" aria-pressed="false">Rodada 36</button>
+          <button class="round-button" type="button" data-round="37" aria-pressed="true">Rodada 37</button>
+          <button class="round-button" type="button" data-round="38" aria-pressed="false">Rodada 38</button>
+        </div>
+        <p class="rounds-status" id="rounds-status" role="status" aria-live="polite">
+          Carregando jogos…
+        </p>
+        <div class="fixture-grid" id="round-match-list" aria-live="polite"></div>
+        <div class="rounds-sources" id="rounds-sources"></div>
+      </section>
+
+      <section class="rounds-section comparison-section" aria-labelledby="comparison-heading">
+        <div class="rounds-heading">
+          <div>
+            <p class="section-kicker">MODELO × RESULTADO · TEMPORADA 2026</p>
+            <h2 id="comparison-heading">Previsão comparada com o realizado</h2>
+          </div>
+          <span class="rounds-snapshot" id="comparison-snapshot"></span>
+        </div>
+        <p class="rounds-description" id="comparison-description">
+          Carregando a avaliação rodada a rodada…
+        </p>
+        <div class="comparison-metrics comparison-overview" aria-label="Resumo dos jogos">
+          <article class="comparison-metric">
+            <span>TOTAL DE JOGOS</span>
+            <strong id="comparison-total">—</strong>
+          </article>
+          <article class="comparison-metric">
+            <span>JOGOS AVALIADOS</span>
+            <strong id="comparison-completed">—</strong>
+          </article>
+          <article class="comparison-metric">
+            <span>JOGOS PENDENTES</span>
+            <strong id="comparison-pending">—</strong>
+          </article>
+        </div>
+        <form class="comparison-configuration" id="comparison-configuration">
+          <div class="section-title-row">
+            <div>
+              <span class="section-kicker">CONFIGURAÇÃO EXPERIMENTAL</span>
+              <h3>Modelos e parâmetros</h3>
+            </div>
+          </div>
+          <div class="comparison-model-options" id="comparison-model-options"></div>
+          <div class="comparison-run-row">
+            <button class="simulate-button" id="run-comparison" type="submit">
+              <span>Executar comparação</span>
+            </button>
+            <p class="rounds-status" id="comparison-run-status" role="status" aria-live="polite">
+              Carregando modelos…
+            </p>
+          </div>
+        </form>
+        <div class="comparison-model-results" id="comparison-model-results"></div>
+        <div class="comparison-toolbar">
+          <label for="comparison-round">Filtrar rodada</label>
+          <select id="comparison-round">
+            <option value="all">Todas as rodadas</option>
+          </select>
+          <p class="rounds-status" id="comparison-status" role="status" aria-live="polite">
+            Calculando previsões…
+          </p>
+        </div>
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th scope="col">Rodada</th>
+                <th scope="col">Confronto</th>
+                <th scope="col">Realizado</th>
+              </tr>
+            </thead>
+            <tbody id="comparison-matches"></tbody>
+          </table>
+        </div>
+        <div class="rounds-sources" id="comparison-sources"></div>
       </section>
 
       <section class="match-panel" aria-labelledby="match-heading">

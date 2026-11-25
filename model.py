@@ -1,6 +1,6 @@
 from bisect import bisect_right
 from collections import defaultdict, deque
-from math import exp, factorial
+from math import exp, factorial, isfinite
 
 import numpy as np
 from sklearn.metrics import (
@@ -10,7 +10,8 @@ from sklearn.metrics import (
     f1_score,
 )
 from sklearn.dummy import DummyClassifier
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 
 
 LABELS = ("home win", "draw", "away win")
@@ -46,6 +47,130 @@ def _build_classifier():
         n_jobs=1,
         random_state=0,
     )
+
+
+COMPARISON_MODEL_OPTIONS = {
+    "random_forest": {
+        "label": "Random Forest",
+        "description": "Ensemble de árvores, modelo usado atualmente pelo simulador.",
+        "fixed_parameters": {"class_weight": "balanced", "random_state": 0},
+        "parameters": {
+            "n_estimators": {
+                "label": "Número de árvores",
+                "type": "integer",
+                "min": 50,
+                "max": 1000,
+                "step": 50,
+                "default": 300,
+            },
+            "max_depth": {
+                "label": "Profundidade máxima",
+                "type": "integer",
+                "min": 2,
+                "max": 24,
+                "step": 1,
+                "default": 8,
+            },
+            "min_samples_leaf": {
+                "label": "Mínimo de amostras por folha",
+                "type": "integer",
+                "min": 1,
+                "max": 50,
+                "step": 1,
+                "default": 15,
+            },
+        },
+    },
+    "logistic_regression": {
+        "label": "Regressão Logística",
+        "description": "Classificador linear multiclasse com regularização.",
+        "fixed_parameters": {"class_weight": "balanced", "random_state": 0},
+        "parameters": {
+            "C": {
+                "label": "Força inversa da regularização (C)",
+                "type": "number",
+                "min": 0.01,
+                "max": 10,
+                "step": 0.01,
+                "default": 1.0,
+            },
+            "max_iter": {
+                "label": "Máximo de iterações",
+                "type": "integer",
+                "min": 100,
+                "max": 5000,
+                "step": 100,
+                "default": 1000,
+            },
+        },
+    },
+    "hist_gradient_boosting": {
+        "label": "HistGradientBoosting",
+        "description": "Boosting de árvores com histogramas para atributos numéricos.",
+        "fixed_parameters": {"class_weight": "balanced", "random_state": 0},
+        "parameters": {
+            "max_iter": {
+                "label": "Número de iterações",
+                "type": "integer",
+                "min": 50,
+                "max": 500,
+                "step": 25,
+                "default": 150,
+            },
+            "learning_rate": {
+                "label": "Taxa de aprendizado",
+                "type": "number",
+                "min": 0.01,
+                "max": 0.3,
+                "step": 0.01,
+                "default": 0.1,
+            },
+            "max_leaf_nodes": {
+                "label": "Máximo de folhas por árvore",
+                "type": "integer",
+                "min": 3,
+                "max": 63,
+                "step": 2,
+                "default": 15,
+            },
+        },
+    },
+}
+
+
+def _default_comparison_configurations():
+    return {
+        model_id: {
+            name: specification["default"]
+            for name, specification in model["parameters"].items()
+        }
+        for model_id, model in COMPARISON_MODEL_OPTIONS.items()
+    }
+
+
+def _comparison_estimators(configurations):
+    estimators = {}
+    for model_id, parameters in configurations.items():
+        if model_id == "random_forest":
+            estimators[model_id] = RandomForestClassifier(
+                **parameters,
+                class_weight="balanced",
+                n_jobs=1,
+                random_state=0,
+            )
+        elif model_id == "logistic_regression":
+            estimators[model_id] = LogisticRegression(
+                **parameters,
+                class_weight="balanced",
+                random_state=0,
+            )
+        else:
+            estimators[model_id] = HistGradientBoostingClassifier(
+                **parameters,
+                class_weight="balanced",
+                random_state=0,
+            )
+    return estimators
 
 
 def _empty_team_stats():
@@ -120,10 +245,14 @@ class Model:
         for season, round_number in sorted(grouped):
             if season != previous_season:
                 if previous_season is not None:
-                    for team in list(ratings):
-                        ratings[team] = 1500.0 + (
-                            ratings[team] - 1500.0
-                        ) * SEASON_ELO_REGRESSION
+                    seasons_without_matches = season - previous_season
+                    for _ in range(seasons_without_matches):
+                        for team in list(ratings):
+                            ratings[team] = 1500.0 + (
+                                ratings[team] - 1500.0
+                            ) * SEASON_ELO_REGRESSION
+                    if seasons_without_matches > 1:
+                        recent_points = defaultdict(lambda: deque(maxlen=5))
                 season_stats = defaultdict(_empty_team_stats)
                 previous_season = season
 
@@ -422,6 +551,311 @@ class Model:
             "labels": list(LABELS),
         }
 
+    @staticmethod
+    def _result_from_score(home_goals, away_goals):
+        if home_goals > away_goals:
+            return "home win"
+        if away_goals > home_goals:
+            return "away win"
+        return "draw"
+
+    @staticmethod
+    def comparison_options():
+        return {
+            model_id: {
+                "label": model["label"],
+                "description": model["description"],
+                "fixed_parameters": model["fixed_parameters"].copy(),
+                "parameters": {
+                    name: specification.copy()
+                    for name, specification in model["parameters"].items()
+                },
+            }
+            for model_id, model in COMPARISON_MODEL_OPTIONS.items()
+        }
+
+    @staticmethod
+    def _normalize_comparison_configurations(configurations):
+        defaults = _default_comparison_configurations()
+        if configurations is None:
+            return defaults
+        if not isinstance(configurations, dict) or not configurations:
+            raise ValueError("Selecione ao menos um modelo para comparar.")
+
+        unknown_models = set(configurations).difference(COMPARISON_MODEL_OPTIONS)
+        if unknown_models:
+            raise ValueError(
+                "Modelo de comparação desconhecido: "
+                + ", ".join(sorted(unknown_models))
+            )
+
+        normalized = {}
+        for model_id, values in configurations.items():
+            if not isinstance(values, dict):
+                raise ValueError(f"Parâmetros inválidos para {model_id}.")
+            model_options = COMPARISON_MODEL_OPTIONS[model_id]
+            definitions = model_options["parameters"]
+            unknown_parameters = set(values).difference(definitions)
+            if unknown_parameters:
+                raise ValueError(
+                    f"Parâmetro desconhecido para {model_options['label']}: "
+                    + ", ".join(sorted(unknown_parameters))
+                )
+
+            model_values = defaults[model_id].copy()
+            for name, value in values.items():
+                specification = definitions[name]
+                if isinstance(value, bool) or not isinstance(value, (int, float)):
+                    raise ValueError(f"O parâmetro {name} deve ser numérico.")
+                if specification["type"] == "integer":
+                    if not isinstance(value, int):
+                        raise ValueError(f"O parâmetro {name} deve ser um inteiro.")
+                    normalized_value = value
+                else:
+                    normalized_value = float(value)
+                    if not isfinite(normalized_value):
+                        raise ValueError(f"O parâmetro {name} deve ser finito.")
+                if not specification["min"] <= normalized_value <= specification["max"]:
+                    raise ValueError(
+                        f"O parâmetro {name} deve estar entre "
+                        f"{specification['min']} e {specification['max']}."
+                    )
+                model_values[name] = normalized_value
+            normalized[model_id] = model_values
+        return normalized
+
+    @staticmethod
+    def _comparison_metrics(actual, predicted):
+        if not actual:
+            return {
+                "samples": 0,
+                "correct_predictions": 0,
+                "accuracy": None,
+                "balanced_accuracy": None,
+                "macro_f1": None,
+                "confusion_matrix": [[0, 0, 0] for _ in LABELS],
+            }
+        matrix = confusion_matrix(actual, predicted, labels=LABELS)
+        class_support = matrix.sum(axis=1)
+        represented_classes = class_support > 0
+        return {
+            "samples": len(actual),
+            "correct_predictions": sum(
+                expected == prediction
+                for expected, prediction in zip(actual, predicted)
+            ),
+            "accuracy": float(accuracy_score(actual, predicted)),
+            "balanced_accuracy": float(
+                np.mean(
+                    np.diag(matrix)[represented_classes]
+                    / class_support[represented_classes]
+                )
+            ),
+            "macro_f1": float(f1_score(
+                actual,
+                predicted,
+                labels=LABELS,
+                average="macro",
+                zero_division=0,
+            )),
+            "confusion_matrix": matrix.tolist(),
+        }
+
+    def compare_fixtures(self, rounds, configurations=None):
+        self._load()
+        if not self._trained:
+            self.train()
+        if not isinstance(rounds, list) or not rounds:
+            raise ValueError("O comparativo precisa conter ao menos uma rodada.")
+
+        configurations = self._normalize_comparison_configurations(configurations)
+        missing_labels = set(LABELS).difference(self._labels)
+        if missing_labels:
+            raise ValueError(
+                "O treino para comparação precisa conter as três classes: "
+                + ", ".join(sorted(missing_labels))
+            )
+        estimators = _comparison_estimators(configurations)
+        for estimator in estimators.values():
+            estimator.fit(self._features, self._labels)
+
+        seen_rounds = set()
+        completed_history = []
+        model_rounds = {model_id: [] for model_id in estimators}
+        for round_data in sorted(rounds, key=lambda item: item["number"]):
+            round_number = int(round_data["number"])
+            if round_number < 1 or round_number in seen_rounds:
+                raise ValueError(f"Número de rodada inválido ou duplicado: {round_number}.")
+            seen_rounds.add(round_number)
+
+            fixtures = round_data.get("matches")
+            if not isinstance(fixtures, list) or not fixtures:
+                raise ValueError(f"A rodada {round_number} não contém jogos.")
+
+            round_matches = []
+            display_matches = []
+            for fixture in fixtures:
+                home_display = fixture.get("home")
+                away_display = fixture.get("away")
+                status = fixture.get("status")
+                if (
+                    not isinstance(home_display, str)
+                    or not home_display.strip()
+                    or not isinstance(away_display, str)
+                    or not away_display.strip()
+                    or home_display.strip() == away_display.strip()
+                    or status not in ("finished", "scheduled")
+                ):
+                    raise ValueError(f"Jogo inválido na rodada {round_number}.")
+
+                home = self.repo.canonicalize_team_name(home_display.strip())
+                away = self.repo.canonicalize_team_name(away_display.strip())
+                score = fixture.get("score")
+                if status == "finished":
+                    if (
+                        not isinstance(score, dict)
+                        or not isinstance(score.get("home"), int)
+                        or isinstance(score.get("home"), bool)
+                        or not isinstance(score.get("away"), int)
+                        or isinstance(score.get("away"), bool)
+                        or score["home"] < 0
+                        or score["away"] < 0
+                    ):
+                        raise ValueError(
+                            f"Placar inválido no jogo {home_display} x {away_display}."
+                        )
+                    actual = self._result_from_score(score["home"], score["away"])
+                    round_matches.append({
+                        "season": 2026,
+                        "round": round_number,
+                        "home_team": home,
+                        "away_team": away,
+                        "home_goals": score["home"],
+                        "away_goals": score["away"],
+                        "result": actual,
+                    })
+                else:
+                    actual = None
+                    round_matches.append({
+                        "season": 2026,
+                        "round": round_number,
+                        "home_team": home,
+                        "away_team": away,
+                        "home_goals": 0,
+                        "away_goals": 0,
+                        "result": "draw",
+                    })
+                display_matches.append((fixture, home_display.strip(), away_display.strip(), actual))
+
+            history_size = len(self._matches) + len(completed_history)
+            history_features, *_ = self._build_match_history(
+                self._matches + completed_history + round_matches
+            )
+            round_features = history_features[history_size:history_size + len(round_matches)]
+            for model_id, estimator in estimators.items():
+                probability_rows = estimator.predict_proba(round_features)
+                evaluated_matches = []
+                for index, (fixture, home, away, actual) in enumerate(display_matches):
+                    probabilities = {
+                        str(label): float(value)
+                        for label, value in zip(
+                            estimator.classes_,
+                            probability_rows[index],
+                        )
+                    }
+                    predicted = max(LABELS, key=probabilities.get)
+                    evaluated = {
+                        "home": home,
+                        "away": away,
+                        "status": fixture["status"],
+                        "predicted": predicted,
+                        "probabilities": probabilities,
+                        "confidence": probabilities[predicted],
+                        "score": fixture.get("score") if actual is not None else None,
+                        "actual": actual,
+                        "correct": predicted == actual if actual is not None else None,
+                    }
+                    if fixture.get("kickoff"):
+                        evaluated["kickoff"] = fixture["kickoff"]
+                    evaluated_matches.append(evaluated)
+
+                completed_count = sum(
+                    match["status"] == "finished" for match in evaluated_matches
+                )
+                actual = [
+                    match["actual"]
+                    for match in evaluated_matches
+                    if match["status"] == "finished"
+                ]
+                predicted = [
+                    match["predicted"]
+                    for match in evaluated_matches
+                    if match["status"] == "finished"
+                ]
+                model_rounds[model_id].append({
+                    "number": round_number,
+                    "total_matches": len(evaluated_matches),
+                    "completed_matches": completed_count,
+                    "matches": evaluated_matches,
+                    "metrics": self._comparison_metrics(actual, predicted),
+                })
+
+            completed_history.extend(
+                match
+                for fixture, match in zip(fixtures, round_matches)
+                if fixture["status"] == "finished"
+            )
+
+        total_count = sum(
+            round_data["total_matches"]
+            for round_data in next(iter(model_rounds.values()))
+        )
+        completed_count = sum(
+            round_data["completed_matches"]
+            for round_data in next(iter(model_rounds.values()))
+        )
+        comparison_models = {}
+        for model_id, estimator in estimators.items():
+            evaluated_matches = [
+                match
+                for round_data in model_rounds[model_id]
+                for match in round_data["matches"]
+            ]
+            actual = [
+                match["actual"]
+                for match in evaluated_matches
+                if match["status"] == "finished"
+            ]
+            predicted = [
+                match["predicted"]
+                for match in evaluated_matches
+                if match["status"] == "finished"
+            ]
+            summary = self._comparison_metrics(actual, predicted)
+            comparison_models[model_id] = {
+                "label": COMPARISON_MODEL_OPTIONS[model_id]["label"],
+                "parameters": {
+                    **configurations[model_id],
+                    **COMPARISON_MODEL_OPTIONS[model_id]["fixed_parameters"],
+                },
+                "summary": {
+                    **summary,
+                    "total_matches": total_count,
+                    "pending_matches": total_count - completed_count,
+                },
+                "rounds": model_rounds[model_id],
+            }
+
+        return {
+            "model_options": self.comparison_options(),
+            "models": comparison_models,
+            "summary": {
+                "total_matches": total_count,
+                "completed_matches": completed_count,
+                "pending_matches": total_count - completed_count,
+            },
+        }
+
     def _recommend_lineup(self, team):
         players = self._rosters.get(team, [])
         selected = []
@@ -570,10 +1004,11 @@ class Model:
         if not self._trained:
             raise RuntimeError("Treine o modelo antes de solicitar uma previsão.")
 
-        home_lineup = self._recommend_lineup(home)
-        away_lineup = self._recommend_lineup(away)
-        home_quality = self._lineup_quality(home_lineup)
-        away_quality = self._lineup_quality(away_lineup)
+        home_lineup = self._recommend_lineup(home) if home in self._rosters else []
+        away_lineup = self._recommend_lineup(away) if away in self._rosters else []
+        has_lineups = bool(home_lineup and away_lineup)
+        home_quality = self._lineup_quality(home_lineup) if home_lineup else 0.5
+        away_quality = self._lineup_quality(away_lineup) if away_lineup else 0.5
 
         raw_probabilities = self.clf.predict_proba(
             np.asarray([self._feature_for_teams(home, away)], dtype=float)
@@ -582,24 +1017,34 @@ class Model:
             label: float(raw_probabilities[index])
             for index, label in enumerate(self.clf.classes_)
         }
-        quality_difference = home_quality - away_quality
-        adjusted = {
-            "home win": base["home win"] * exp(LINEUP_PROBABILITY_WEIGHT * quality_difference),
-            "draw": base["draw"],
-            "away win": base["away win"] * exp(-LINEUP_PROBABILITY_WEIGHT * quality_difference),
-        }
-        total = sum(adjusted.values())
-        probabilities = {label: value / total for label, value in adjusted.items()}
+        if has_lineups:
+            quality_difference = home_quality - away_quality
+            adjusted = {
+                "home win": base["home win"] * exp(
+                    LINEUP_PROBABILITY_WEIGHT * quality_difference
+                ),
+                "draw": base["draw"],
+                "away win": base["away win"] * exp(
+                    -LINEUP_PROBABILITY_WEIGHT * quality_difference
+                ),
+            }
+            total = sum(adjusted.values())
+            probabilities = {
+                label: value / total for label, value in adjusted.items()
+            }
+        else:
+            probabilities = base.copy()
         predicted = max(LABELS, key=probabilities.get)
 
         return {
             "predicted": predicted,
             "probabilities": probabilities,
             "model_probabilities": base,
+            "lineup_adjustment_applied": has_lineups,
             "lineups": {"home": home_lineup, "away": away_lineup},
             "lineup_strength": {
-                "home": round(home_quality, 3),
-                "away": round(away_quality, 3),
+                "home": round(home_quality, 3) if home_lineup else None,
+                "away": round(away_quality, 3) if away_lineup else None,
             },
             "score": self._simulate_score(
                 home,
